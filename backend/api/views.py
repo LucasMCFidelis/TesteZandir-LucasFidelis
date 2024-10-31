@@ -4,7 +4,7 @@ from base.models import Filme
 from .serializers import FilmeSerializer
 
 @api_view(['GET'])
-def getData(request):
+def getFilmes(request):
     filmes = Filme.objects.all()
     serializer = FilmeSerializer(filmes, many=True)
     return Response(serializer.data)
