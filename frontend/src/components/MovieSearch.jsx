@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../index.css';
 
 const MovieSearch = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/filmes/');
+        setMovies(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar filmes:', error);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
   const handleSearch = () => {
-    const mockMovies = [
-      { title: 'Inception', image: 'https://via.placeholder.com/150' },
-      { title: 'Interstellar', image: 'https://via.placeholder.com/150' },
-      { title: 'The Matrix', image: 'https://via.placeholder.com/150' },
-    ];
-    const filteredMovies = mockMovies.filter(movie =>
-      movie.title.toLowerCase().includes(query.toLowerCase())
+    const filteredMovies = movies.filter(movie =>
+      movie.titulo.toLowerCase().includes(query.toLowerCase())
     );
     setMovies(filteredMovies);
   };
@@ -33,8 +42,9 @@ const MovieSearch = () => {
         {movies.length > 0 ? (
           movies.map((movie, index) => (
             <div className="movie-item" key={index}>
-              <img src={movie.image} alt={movie.title} />
-              <h2>{movie.title}</h2>
+              <h2>{movie.titulo}</h2>
+              <p>Diretor: {movie.diretor}</p>
+              <p>Ano: {movie.ano}</p>
             </div>
           ))
         ) : (
