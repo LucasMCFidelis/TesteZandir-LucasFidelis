@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieSearch from './components/MovieSearch';
+import MovieSearch from './pages/movieSearch/MovieSearch.jsx';
 
 const App = () => {
   return (
