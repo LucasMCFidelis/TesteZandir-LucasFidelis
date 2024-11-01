@@ -98,7 +98,10 @@ const MovieSearch = () => {
             />
           ))
         ) : (
-          <p>Nenhum filme encontrado.</p>
+          <div className="no-results">
+            <img src="/empty.svg" alt="Nenhum filme encontrado" />
+            <p>Nenhum filme encontrado.</p>
+          </div>
         )}
       </div>
       <div className="pagination">
