@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../index.css';
 import { Button } from './button/button.jsx';
+import { Input } from './input/input.jsx';
 import { MovieCard } from './movieCard/movieCard.jsx';
 import { RefreshCcw } from 'lucide-react'
 
@@ -53,16 +54,17 @@ const MovieSearch = () => {
   return (
     <div className="movie-search">
       <h1>Busca de Filmes</h1>
+
       <div className='search-bar'>
         <div className="search-inputs">
-          <input
+          <Input
             id='title'
             type="text"
             placeholder="Digite o nome do filme..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <input
+          <Input
             id='year'
             type="number"
             placeholder="Ano"
@@ -70,12 +72,12 @@ const MovieSearch = () => {
             onChange={(e) => setYearQuery(e.target.value)}
           />
         </div>
+
         <div className='movie-actions'>
           <Button
             onClick={handleSearch}
             text={'Buscar'}
           />
-
           <Button
             icon={<RefreshCcw />}
             onClick={() => {
@@ -87,6 +89,7 @@ const MovieSearch = () => {
           />
         </div>
       </div>
+
       <div className="movie-list">
         {currentMovies.length > 0 ? (
           currentMovies.map((movie) => (
@@ -104,6 +107,7 @@ const MovieSearch = () => {
           </div>
         )}
       </div>
+      
       <div className="pagination">
         <Button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
