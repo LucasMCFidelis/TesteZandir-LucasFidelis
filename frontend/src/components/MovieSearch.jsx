@@ -72,13 +72,13 @@ const MovieSearch = () => {
         </div>
         <div className='movie-actions'>
           <Button
-            onClickFunction={handleSearch}
+            onClick={handleSearch}
             text={'Buscar'}
           />
 
           <Button
             icon={<RefreshCcw />}
-            onClickFunction={() => {
+            onClick={() => {
               setQuery('');
               setYearQuery('');
               setFilteredMovies(movies);
@@ -106,13 +106,13 @@ const MovieSearch = () => {
       </div>
       <div className="pagination">
         <Button
-          onClickFunction={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           text="Anterior"
           disabled={currentPage === 1}
         />
         <span>Pág {currentPage} de {totalPages}</span>
         <Button
-          onClickFunction={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           text="Próxima"
           disabled={currentPage === totalPages}
         />

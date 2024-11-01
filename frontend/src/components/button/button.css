@@ -13,3 +13,8 @@ button {
 button:hover {
     background-color: #CC450C;
 }
+
+button:disabled {
+    cursor: not-allowed;    
+    opacity: 0.6;
+  }

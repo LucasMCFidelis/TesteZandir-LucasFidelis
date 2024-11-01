@@ -1,8 +1,8 @@
 import './button.css'
 
-export function Button({text, icon, onClickFunction}){
+export function Button({text, icon, ...props}){
     return (
-        <button onClick={onClickFunction}>
+        <button {...props}>
             {icon}
             {text}
         </button>
