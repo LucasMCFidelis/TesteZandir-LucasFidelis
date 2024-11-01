@@ -18,17 +18,25 @@ h1 {
   text-align: center;
 }
 
-.search-bar {
+.search-inputs {
+  flex: 1;
   display: flex;
   justify-content: space-between;
-  flex: 1;
+  
 }
 
-input {
-  flex: 1;
+.search-inputs input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.search-inputs #title {
+  flex: 1;
+}
+
+.search-inputs #year {
+  width: 100px;
 }
 
 .movie-list {
@@ -38,7 +46,7 @@ input {
   margin: 50px 0;
 }
 
-.movie-actions {
+.search-bar {
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -50,4 +58,37 @@ input {
   justify-content: center;
   align-items: center;
   gap: 16px;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 16px
+}
+
+@media (max-width: 600px) {
+  .movie-search {
+    height: 100dvh;
+  }
+
+  .movie-list {
+    margin: 20px 0;
+  }
+
+  .search-bar {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .search-inputs {
+    width: 100%;
+  }
+
+  .search-inputs #year {
+    width: 50px;
+  }
+
+  .movie-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

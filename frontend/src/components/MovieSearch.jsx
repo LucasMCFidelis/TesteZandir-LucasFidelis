@@ -38,7 +38,7 @@ const MovieSearch = () => {
       const matchesYear = yearQuery.trim() !== '' && movie.ano.toString().includes(yearQuery);
       return matchesTitle && matchesYear;
     });
-    
+
     setFilteredMovies(filteredMovies);
     setCurrentPage(1);
   };
@@ -53,34 +53,39 @@ const MovieSearch = () => {
   return (
     <div className="movie-search">
       <h1>Busca de Filmes</h1>
-      <div className='movie-actions'>
-        <div className="search-bar">
+      <div className='search-bar'>
+        <div className="search-inputs">
           <input
+            id='title'
             type="text"
             placeholder="Digite o nome do filme..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <input
+            id='year'
             type="number"
             placeholder="Ano"
             value={yearQuery}
             onChange={(e) => setYearQuery(e.target.value)}
           />
+        </div>
+        <div className='movie-actions'>
           <Button
             onClickFunction={handleSearch}
             text={'Buscar'}
           />
+
+          <Button
+            icon={<RefreshCcw />}
+            onClickFunction={() => {
+              setQuery('');
+              setYearQuery('');
+              setFilteredMovies(movies);
+              setCurrentPage(1);
+            }}
+          />
         </div>
-        <Button
-          icon={<RefreshCcw />}
-          onClickFunction={() => {
-            setQuery('');
-            setYearQuery('');
-            setFilteredMovies(movies);
-            setCurrentPage(1);
-          }}
-        />
       </div>
       <div className="movie-list">
         {currentMovies.length > 0 ? (
