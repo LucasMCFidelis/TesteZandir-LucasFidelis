@@ -36,7 +36,7 @@ const MovieSearch = () => {
 
     const filteredMovies = movies.filter(movie => {
       const matchesTitle = movie.titulo.toLowerCase().includes(query.toLowerCase());
-      const matchesYear = yearQuery.trim() !== '' && movie.ano.toString().includes(yearQuery);
+      const matchesYear = movie.ano.toString().includes(yearQuery);
       return matchesTitle && matchesYear;
     });
 
