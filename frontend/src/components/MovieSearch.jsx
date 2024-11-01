@@ -107,7 +107,7 @@ const MovieSearch = () => {
           text="Anterior"
           disabled={currentPage === 1}
         />
-        <span>Página {currentPage} de {totalPages}</span>
+        <span>Pág {currentPage} de {totalPages}</span>
         <Button
           onClickFunction={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           text="Próxima"
