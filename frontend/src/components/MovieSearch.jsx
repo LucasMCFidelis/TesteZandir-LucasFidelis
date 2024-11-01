@@ -7,6 +7,7 @@ import { RefreshCcw } from 'lucide-react'
 
 const MovieSearch = () => {
   const [query, setQuery] = useState('');
+  const [yearQuery, setYearQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
@@ -25,12 +26,17 @@ const MovieSearch = () => {
   }, []);
 
   const handleSearch = () => {
-    if (query.trim().length === 0) {
+    if (query.trim().length === 0 && yearQuery.trim().length === 0) {
       setFilteredMovies(movies)
+      return
     }
-    const filteredMovies = movies.filter(movie =>
-      movie.titulo.toLowerCase().includes(query.toLowerCase())
-    );
+
+    const filteredMovies = movies.filter(movie => {
+      const matchesTitle = movie.titulo.toLowerCase().includes(query.toLowerCase());
+      const matchesYear = yearQuery.trim() !== '' && movie.ano === Number(yearQuery);
+      return matchesTitle && matchesYear;
+    });
+    
     setFilteredMovies(filteredMovies);
   };
 
@@ -45,6 +51,12 @@ const MovieSearch = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
+          <input
+            type="number"
+            placeholder="Ano"
+            value={yearQuery}
+            onChange={(e) => setYearQuery(e.target.value)}
+          />
           <Button
             onClickFunction={handleSearch}
             text={'Buscar'}
@@ -54,6 +66,7 @@ const MovieSearch = () => {
           icon={<RefreshCcw />}
           onClickFunction={() => {
             setQuery('');
+            setYearQuery('');
             setFilteredMovies(movies);
           }}
         />
