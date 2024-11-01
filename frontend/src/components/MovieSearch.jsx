@@ -10,6 +10,8 @@ const MovieSearch = () => {
   const [yearQuery, setYearQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 6;
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -38,7 +40,15 @@ const MovieSearch = () => {
     });
     
     setFilteredMovies(filteredMovies);
+    setCurrentPage(1);
   };
+
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = filteredMovies.slice(indexOfFirstMovie, indexOfLastMovie);
+
+  // Calcular o número total de páginas
+  const totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
 
   return (
     <div className="movie-search">
@@ -68,22 +78,36 @@ const MovieSearch = () => {
             setQuery('');
             setYearQuery('');
             setFilteredMovies(movies);
+            setCurrentPage(1);
           }}
         />
       </div>
       <div className="movie-list">
-        {filteredMovies.length > 0 ? (
-          filteredMovies.map((movie, index) => (
+        {currentMovies.length > 0 ? (
+          currentMovies.map((movie) => (
             <MovieCard
               key={movie.id}
               titulo={movie.titulo}
               diretor={movie.diretor}
               ano={movie.ano}
-            ></MovieCard>
+            />
           ))
         ) : (
           <p>Nenhum filme encontrado.</p>
         )}
+      </div>
+      <div className="pagination">
+        <Button
+          onClickFunction={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          text="Anterior"
+          disabled={currentPage === 1}
+        />
+        <span>Página {currentPage} de {totalPages}</span>
+        <Button
+          onClickFunction={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          text="Próxima"
+          disabled={currentPage === totalPages}
+        />
       </div>
     </div>
   );
