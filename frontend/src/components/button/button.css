@@ -7,9 +7,9 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     font-size: clamp(16px, 1.3vw, 20px);
+    height: 100%;
 }
   
 button:hover {
     background-color: #CC450C;
-    tranfor
 }

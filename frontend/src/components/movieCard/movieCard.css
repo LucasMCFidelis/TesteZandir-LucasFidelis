@@ -2,7 +2,7 @@
     background: #27272A;
     border-radius: 20px;
     overflow: hidden; 
-    flex: 0 1 calc(33.333% - 10px);
+    flex: 0 1 calc(33.333% - 20px);
     display: flex;
     flex-direction: column
 }
