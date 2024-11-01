@@ -2,14 +2,14 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #18181B;
+  color: white;
 }
 
 .movie-search {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-  background: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -31,40 +31,8 @@ input {
   border-radius: 4px;
 }
 
-button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
 .movie-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-.movie-item {
-  flex: 1 1 calc(33.333% - 10px);
-  background: #f9f9f9;
-  border-radius: 4px;
-  padding: 10px;
-  text-align: center;
-}
-
-.movie-item img {
-  max-width: 100%;
-  border-radius: 4px;
-}
-
-@media (max-width: 600px) {
-  .movie-item {
-    flex: 1 1 calc(50% - 10px);
-  }
 }
