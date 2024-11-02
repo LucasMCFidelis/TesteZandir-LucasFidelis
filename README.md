@@ -30,13 +30,17 @@ Este projeto consiste em um catálogo de filmes com uma interface de busca. Ele 
     ```bash
     pip install -r requirements.txt
 4. Obtenha sua sua própria SECRET_KEY para o Django
-    - Abra o Python shell do Django
+    - Abrir o terminal do python
         ```bash
-        python manage.py shell
+        python
     - Obtenha a chave
         ```bash
-        from django.core.management.utils import get_random_secret_key
-        print(get_random_secret_key())
+        import secrets 
+        print(secrets.token_urlsafe(50))
+        #Execute e copie a chave printada
+    - Fechar o terminal python
+        ```bash
+        exit()
 5. Configure as variáveis de ambiente:
 Crie um arquivo `.env` na raiz do projeto backend e adicione:
     ```bash
@@ -46,10 +50,9 @@ Crie um arquivo `.env` na raiz do projeto backend e adicione:
     python manage.py migrate
 ### Executando o servidor
 
-Para iniciar o servidor de desenvolvimento:
-    `python manage.py runserver`
-
-
+- Para iniciar o servidor de desenvolvimento:
+    ```bash
+    python manage.py runserver`
 O servidor estará disponível em `http://localhost:8000`.
 
 ## Frontend (React + Vite)
