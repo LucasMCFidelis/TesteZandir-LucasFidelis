@@ -2,6 +2,12 @@
 
 Este projeto consiste em um catálogo de filmes com uma interface de busca. Ele é dividido em duas partes: um backend em Django e um frontend em React.
 
+## Screenshots
+![Screenshot Desktop](./screenshots/desktop_layout.png)
+![Screenshot Desktop Empty](./screenshots/desktop_layout_empty.png)
+![Screenshot Mobile ](./screenshots/mobile_layout.png)
+![Screenshot Mobile Empty](./screenshots/mobile_layout_empty.png)
+
 ## Requisitos
 
 - Python 3.x
